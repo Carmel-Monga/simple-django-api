@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block main_content %}
+  <h1 class="mb-4">Top Rated Apps</h1>
+  <p class="text-muted">Showing the highest-rated apps. Use the API endpoint <code>/api/apps/top_rated/</code> for JSON.</p>
+
+  <table class="table table-sm table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Rating</th>
+        <th>Installs</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for app in apps %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ app.name }}</td>
+        <td>{{ app.category }}</td>
+        <td>{{ app.rating }}</td>
+        <td>{{ app.installs }}</td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="5">No top-rated apps available.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
